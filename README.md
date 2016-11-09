@@ -10,7 +10,7 @@ HCI Doodler Project by Jacqueline Chen
 * Random background color
 
 ## Resources
-Used Android and Java documentation.
-Random number generator:  http://stackoverflow.com/questions/6029495/how-can-i-generate-random-number-in-specific-range-in-android
-Changing background color: http://stackoverflow.com/questions/28174635/android-canvas-change-background-color
-Flipping an image: http://stackoverflow.com/questions/28174635/android-canvas-change-background-color
+* Used Android and Java documentation.
+* Random number generator:  http://stackoverflow.com/questions/6029495/how-can-i-generate-random-number-in-specific-range-in-android
+* Changing background color: http://stackoverflow.com/questions/28174635/android-canvas-change-background-color
+* Flipping an image: http://stackoverflow.com/questions/28174635/android-canvas-change-background-color
