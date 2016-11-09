@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_doodle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chibird.doodler.Doodle">
+
+    <com.chibird.doodler.DoodleView
+        android:id="@+id/doodleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/brushButton"
+        android:layout_alignTop="@+id/rColor"
+        android:id="@+id/backgroundBox"
+        android:background="#ffffff"
+        android:alpha=".4"></LinearLayout>
+
+    <Button
+        android:text="Clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clearButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opacityBar"
+        android:max="100"
+        android:layout_alignTop="@+id/opacityLabel"
+        android:layout_toRightOf="@+id/opacityLabel"
+        android:layout_alignRight="@+id/brushButton"
+        android:layout_alignEnd="@+id/brushButton" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/brushSizeBar"
+        android:max="100"
+        android:progress="10"
+        android:layout_above="@+id/opacityLabel"
+        android:layout_alignRight="@+id/opacityBar"
+        android:layout_alignEnd="@+id/opacityBar"
+        android:layout_toRightOf="@+id/sizeLabel"
+        android:layout_toEndOf="@+id/sizeLabel" />
+
+    <TextView
+        android:text="Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sizeLabel"
+        android:layout_alignBottom="@+id/brushSizeBar"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Opacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opacityLabel"
+        android:layout_above="@+id/brushButton"
+        android:layout_alignRight="@+id/sizeLabel"
+        android:layout_alignEnd="@+id/sizeLabel" />
+
+    <TextView
+        android:text="R 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/sizeLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:id="@+id/rColor" />
+
+    <TextView
+        android:text="G 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/opacityLabel"
+        android:layout_alignLeft="@+id/rColor"
+        android:layout_alignStart="@+id/rColor"
+        android:id="@+id/gColor" />
+
+    <TextView
+        android:text="B 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bColor"
+        android:layout_alignBaseline="@+id/brushButton"
+        android:layout_alignBottom="@+id/brushButton"
+        android:layout_alignLeft="@+id/gColor"
+        android:layout_alignStart="@+id/gColor" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gColor"
+        android:layout_alignRight="@+id/rBar"
+        android:layout_alignEnd="@+id/rBar"
+        android:id="@+id/gBar"
+        android:layout_alignLeft="@+id/rBar"
+        android:layout_alignStart="@+id/rBar"
+        android:max="255"
+        android:progress="0" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bColor"
+        android:layout_alignLeft="@+id/rBar"
+        android:layout_alignStart="@+id/rBar"
+        android:id="@+id/bBar"
+        android:layout_alignRight="@+id/rBar"
+        android:layout_alignEnd="@+id/rBar"
+        android:max="255"
+        android:progress="0" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rBar"
+        android:layout_alignTop="@+id/rColor"
+        android:layout_alignLeft="@+id/rColor"
+        android:layout_marginLeft="28dp"
+        android:layout_toLeftOf="@+id/opacityLabel"
+        android:layout_toStartOf="@+id/opacityLabel"
+        android:max="255"
+        android:progress="0" />
+
+    <Button
+        android:text="BRUSH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brushButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:id="@+id/undoButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:id="@+id/redoButton"
+        android:layout_alignBottom="@+id/undoButton"
+        android:layout_toRightOf="@+id/undoButton"
+        android:layout_toEndOf="@+id/undoButton"
+        android:scaleX="-1" />
+
+    <Button
+        android:text="RANDOM BG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/randomBg"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/brushButton"
+        android:layout_toStartOf="@+id/brushButton" />
+
+</RelativeLayout>
