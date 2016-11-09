@@ -107,6 +107,7 @@ public class DoodleView extends View {
         invalidate();
     }
 
+    // Removes the last drawing and adds it to the "undid" drawings history
     public void undo() {
         if (drawings.size() != 0) {
             Drawing last = drawings.remove(drawings.size() - 1);
@@ -115,6 +116,7 @@ public class DoodleView extends View {
         }
     }
 
+    // Adds the last drawing in the undid history back to the drawings that get drawn
     public void redo(){
         if (undidDrawings.size() != 0) {
             Drawing last = undidDrawings.remove(undidDrawings.size() - 1);

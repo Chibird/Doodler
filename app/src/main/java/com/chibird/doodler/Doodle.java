@@ -9,6 +9,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Doodle extends AppCompatActivity{
 
     private boolean brushOpen = false;
@@ -18,17 +20,26 @@ public class Doodle extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doodle);
         final DoodleView doodleView = (DoodleView)findViewById(R.id.doodleView);
-        findViewById(R.id.brushSizeBar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.sizeLabel).setVisibility(View.INVISIBLE);
-        findViewById(R.id.opacityBar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.opacityLabel).setVisibility(View.INVISIBLE);
-        findViewById(R.id.rColor).setVisibility(View.INVISIBLE);
-        findViewById(R.id.rBar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.gColor).setVisibility(View.INVISIBLE);
-        findViewById(R.id.gBar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.bColor).setVisibility(View.INVISIBLE);
-        findViewById(R.id.bBar).setVisibility(View.INVISIBLE);
-        findViewById(R.id.backgroundBox).setVisibility(View.INVISIBLE);
+        final ArrayList<View> brushSettings = new ArrayList<View>();
+
+        // Adding all brush settings to array for easy visibility/invisibility changing.
+        // Would be more efficient to put in a layout, but layout was acting wonky, so using this
+        // workable solution for now.
+        brushSettings.add(findViewById(R.id.brushSizeBar));
+        brushSettings.add(findViewById(R.id.sizeLabel));
+        brushSettings.add(findViewById(R.id.opacityBar));
+        brushSettings.add(findViewById(R.id.opacityLabel));
+        brushSettings.add(findViewById(R.id.rColor));
+        brushSettings.add(findViewById(R.id.rBar));
+        brushSettings.add(findViewById(R.id.gColor));
+        brushSettings.add(findViewById(R.id.gBar));
+        brushSettings.add(findViewById(R.id.bColor));
+        brushSettings.add(findViewById(R.id.bBar));
+        brushSettings.add(findViewById(R.id.backgroundBox));
+
+        for (int i = 0; i < brushSettings.size(); i++) {
+            brushSettings.get(i).setVisibility(View.INVISIBLE);
+        }
 
         Button clearButton = (Button)findViewById(R.id.clearButton);
         clearButton.setOnClickListener(new Button.OnClickListener(){
@@ -74,35 +85,20 @@ public class Doodle extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(!brushOpen) {
-                    findViewById(R.id.brushSizeBar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.sizeLabel).setVisibility(View.VISIBLE);
-                    findViewById(R.id.opacityBar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.opacityLabel).setVisibility(View.VISIBLE);
-                    findViewById(R.id.rColor).setVisibility(View.VISIBLE);
-                    findViewById(R.id.rBar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.gColor).setVisibility(View.VISIBLE);
-                    findViewById(R.id.gBar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.bColor).setVisibility(View.VISIBLE);
-                    findViewById(R.id.bBar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.backgroundBox).setVisibility(View.VISIBLE);
+                    for (int i = 0; i < brushSettings.size(); i++) {
+                        brushSettings.get(i).setVisibility(View.VISIBLE);
+                    }
                     brushOpen = true;
                 } else {
-                    findViewById(R.id.brushSizeBar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.sizeLabel).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.opacityBar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.opacityLabel).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.rColor).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.rBar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.gColor).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.gBar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.bColor).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.bBar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.backgroundBox).setVisibility(View.INVISIBLE);
+                    for (int i = 0; i < brushSettings.size(); i++) {
+                        brushSettings.get(i).setVisibility(View.INVISIBLE);
+                    }
                     brushOpen = false;
                 }
             }
         });
 
+        // Change brush size
         SeekBar brushSizeBar = (SeekBar)findViewById(R.id.brushSizeBar);
         brushSizeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -110,12 +106,10 @@ public class Doodle extends AppCompatActivity{
             public void onProgressChanged(SeekBar seekBar,
                                           int progress,
                                           boolean fromUser) {
-                //Toast.makeText(getApplicationContext(),"HI"+Integer.toString(progress),Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
@@ -125,7 +119,7 @@ public class Doodle extends AppCompatActivity{
 
         });
 
-
+        // Change opacity
         SeekBar opacityBar = (SeekBar)findViewById(R.id.opacityBar);
         opacityBar.setProgress(100);
         opacityBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -134,7 +128,6 @@ public class Doodle extends AppCompatActivity{
             public void onProgressChanged(SeekBar seekBar,
                                           int progress,
                                           boolean fromUser) {
-                //Toast.makeText(getApplicationContext(),"HI"+Integer.toString(progress),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -149,6 +142,7 @@ public class Doodle extends AppCompatActivity{
 
         });
 
+        // Change R component of color
         SeekBar rBar = (SeekBar)findViewById(R.id.rBar);
         rBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -156,7 +150,6 @@ public class Doodle extends AppCompatActivity{
             public void onProgressChanged(SeekBar seekBar,
                                           int progress,
                                           boolean fromUser) {
-                //Toast.makeText(getApplicationContext(),"HI"+Integer.toString(progress),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -172,6 +165,7 @@ public class Doodle extends AppCompatActivity{
             }
         });
 
+        // Change G component of color
         SeekBar gBar = (SeekBar)findViewById(R.id.gBar);
         gBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -179,12 +173,10 @@ public class Doodle extends AppCompatActivity{
             public void onProgressChanged(SeekBar seekBar,
                                           int progress,
                                           boolean fromUser) {
-                //Toast.makeText(getApplicationContext(),"HI"+Integer.toString(progress),Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
@@ -195,6 +187,7 @@ public class Doodle extends AppCompatActivity{
             }
         });
 
+        // Change B component of color
         SeekBar bBar = (SeekBar)findViewById(R.id.bBar);
         bBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -202,7 +195,6 @@ public class Doodle extends AppCompatActivity{
             public void onProgressChanged(SeekBar seekBar,
                                           int progress,
                                           boolean fromUser) {
-                //Toast.makeText(getApplicationContext(),"HI"+Integer.toString(progress),Toast.LENGTH_SHORT).show();
             }
 
             @Override
